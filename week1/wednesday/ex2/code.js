@@ -59,25 +59,64 @@ for (let i = 0; i < categories.length; i++) {
   console.log(`the ${categories[i]} stock amount is ${stock_by_category[i]}`);
   
 }
-let needed_ingrediants=[]
+// let needed_ingrediants=[]
+// function save_order(arr) {
+//   let existant=true
+//   arr.forEach(e => {
+//     let ingrediant =stock.find(n=>n.nom==e.name)
+//     if(e.amount>= ingrediant.quantite){
+//       existant=false
+//     }else{
+//   needed_ingrediants.push(ingrediant)
+//     }
+//   });
+//   if(existant==true){
+//      arr.forEach(e => {
+//     let ingrediant =stock.find(e=>e.nom==e.name)
+//   ingrediant-=e.amount
+//   })}
+//   else{
+// show(needed_ingrediants)
+//   }
+//   }
+//   save_order([{name:"Tomate",amount:3},{name:"Boeuf",amount:4},{name:"Safran",amount:0.01}])
+
+//Challenge 5
+
 function save_order(arr) {
-  let existant=true
+  let existant = true;
+  let needed_ingredients = [];
+
   arr.forEach(e => {
-    let ingrediant =stock.find(n=>n.nom==e.name)
-    if(e.amount>= ingrediant.quantite){
-      existant=false
-    }else{
-  needed_ingrediants.push(ingrediant)
+    let ingredient = stock.find(n => n.nom == e.name);
+    if (ingredient && e.amount > ingredient.quantite) {
+      existant = false;
+      needed_ingredients.push(e.name);
     }
   });
-  if(existant==true){
-     arr.forEach(e => {
-    let ingrediant =stock.find(e=>e.nom==e.name)
-  ingrediant-=e.amount
-  })}
-  else{
-show(needed_ingrediants)
+
+  if (existant) {
+    arr.forEach(e => {
+      let ingredient = stock.find(n => n.nom == e.name);
+      if (ingredient) {
+        ingredient.quantite -= e.amount;
+      }
+    });
+    console.log("order made");
+  } else {
+    console.log("order not made,because of lack of");
+    show(needed_ingredients)
   }
-  }
-  save_order([{name:"Tomate",amount:3},{name:"Boeuf",amount:4},{name:"Safran",amount:0.01}])
+}
+
+save_order([{name:"Tomate", amount:33}, {name:"Boeuf", amount:4}, {name:"Safran", amount:0.03}]);
+
+
+//Challenge 6
+let amounts_needed = stock.filter(e => e.quantite < e.seuil_alerte).map(e => ({ 
+    nom: e.nom, 
+    needed: e.seuil_alerte + (e.seuil_alerte - e.quantite) 
+  }));
+
+console.log(amounts_needed);
 
