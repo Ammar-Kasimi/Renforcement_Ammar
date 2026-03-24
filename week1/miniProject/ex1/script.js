@@ -76,7 +76,7 @@ function publish_announce(seller_id, title, desc, price, category, condition) {
     price: price,
     category: category,
     condition: condition,
-    status: "available" //status
+    status: "available" 
     ,
     publishDate: new Date()
 
