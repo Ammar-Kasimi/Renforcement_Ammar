@@ -297,7 +297,7 @@ function display_seller_profile(seller_id) {
 
 console.log("\n--- 1. TESTING: PUBLISH ANNOUNCEMENTS ---")
 // Seller 1 (RabatRigs) publishes two items
-publish_announce(1, "Gaming Mouse", "RGB 10000 DPI", 50, "electronics", "new") // ID 1
+publish_announce(1, "Gaming Mouse", "RGB 10000 DPI", 50, "electron", "new") // ID 1
 publish_announce(1, "Mechanical Keyboard", "Blue switches", 100, "electronics", "new") // ID 2
 // Seller 3 (PancakeChef) publishes one item
 publish_announce(3, "Non-stick Pan", "Perfect for pancakes", 25, "other", "very good") // ID 3
